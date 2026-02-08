@@ -8,6 +8,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
   && apt-get install -y nodejs \
   && npm install -g yarn
 
+# libsoup 関連ツール
+RUN apt-get install -y \
+  libsoup2.4-dev \
+  javascriptcoregtk-4.1 \
+  libsoup-3.0 \
+  webkit2gtk-4.1 \
+  libwebkit2gtk-4.1-dev
+
 # その他必要なツール
 RUN apt-get install -y \
   build-essential \
