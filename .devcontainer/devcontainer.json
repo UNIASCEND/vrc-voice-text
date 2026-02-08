@@ -1,0 +1,25 @@
+{
+  "name": "VoiceText",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceFolder": "/workspace", 
+  "workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind,consistency=cached",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",  // Rust の補完
+        "vadimcn.vscode-lldb",      // Rust Debugger
+        "tauri-apps.tauri-vscode",  // Tauri 拡張
+        "fill-labs.dependi",        // Cargo crates 表示
+        "tamasfe.even-better-toml", // Cargo crates 補完
+        "esbenp.prettier-vscode",   // TS/JS formatting
+        "dbaeumer.vscode-eslint"    // Lint
+      ]
+    }
+  },
+  "features": {
+      "ghcr.io/hwaien/devcontainer-features/match-host-time-zone:0.0.13": {}
+  },
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+}
