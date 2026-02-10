@@ -33,7 +33,15 @@ git remote add upstream https://github.com/UNIASCEND/vrc-voice-text.git
 /workspace/vrc-voice-text$ yarn install
 ```
 
-### Run
+### Run (dev)
+通常の開発では下記コマンドを使用して動作確認をしてください。
 ```bash
-/workspace/vrc-voice-text$ yarn run tauri dev
+/workspace/vrc-voice-text$ yarn tauri dev
+```
+
+### Build (release)
+実行ファイル (.exe) を作成します。Windows 上で動作確認したい時に使用してください。  
+成果物は "/vrc-voice-text/src-tauri/target/x86_64-pc-windows-msvc/release/vrc-voice-text.exe" に生成されます。
+```bash
+/workspace/vrc-voice-text$ yarn tauri build -- --runner cargo-xwin --target x86_64-pc-windows-msvc
 ```
