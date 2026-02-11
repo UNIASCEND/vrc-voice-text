@@ -1,9 +1,12 @@
-name: 'publish'
+name: 'ci-build'
 
 on:
+  workflow_dispatch:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 # ワークフローレベルでパーミッションをすべて無効化
 permissions: {}
@@ -14,7 +17,7 @@ defaults:
     shell: bash
 
 jobs:
-  publish-tauri:
+  build-tauri:
     timeout-minutes: 30
     permissions:
       contents: write
@@ -64,11 +67,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
-          releaseName: 'App v__VERSION__'
+          tagName: ${{ github.head_ref || github.ref_name }}
+          releaseName: '${{ github.head_ref || github.ref_name }}'
           releaseBody: 'See the assets to download this version and install.'
           releaseDraft: true
           prerelease: false
           projectPath: './vrc-voice-text'
           tauriScript: 'npx tauri'
           args: ${{ matrix.args }}
+
+  # test:
+  # lint:
+  # type:
