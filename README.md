@@ -1,5 +1,8 @@
 # Welcome VRC VoiceText
 
+## Spec
+ - [VRC VoiceText Spec](https://github.com/UNIASCEND/vrc-voice-text/wiki/VRC-VoiceText-Spec)
+
 ## 環境構築 (Windows)
 ### 必要なツール
  - [VS Code](https://code.visualstudio.com/)
